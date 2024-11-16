@@ -11,7 +11,7 @@
             font-family: 'Arial', sans-serif;
             background: #0d1117;
             color: #f0f6fc;
-            overflow: hidden; /* To hide overflowing rocket animation */
+            overflow: hidden;
         }
         header {
             background: linear-gradient(90deg, #f53844, #42378f);
@@ -55,8 +55,8 @@
         .feature:hover {
             transform: scale(1.05);
         }
-        .feature img {
-            max-width: 100px;
+        .feature iframe {
+            max-width: 100%;
             margin-bottom: 1rem;
         }
         .feature h3 {
@@ -122,13 +122,16 @@
         <p>Powering the Future of Transactions</p>
     </header>
 
-    <img class="rocket" src="https://giphy.com/embed/PqjTdvXImZQfcmTYEO" alt="Rocket Launch">
+    <!-- Rocket Animation -->
+    <div class="rocket">
+        <iframe src="https://giphy.com/embed/PqjTdvXImZQfcmTYEO" width="100%" height="100%" style="position: absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    </div>
 
     <main class="container">
         <!-- Features Section -->
         <section class="features">
             <div class="feature">
-                <img src="https://giphy.com/gifs/ujwDBM6tdTP1JvHn7n" alt="Feature 1">
+                <iframe src="https://giphy.com/embed/ujwDBM6tdTP1JvHn7n" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 <h3>Taking off to the Future!</h3>
             </div>
             <div class="feature">
@@ -154,5 +157,6 @@
     </script>
 </body>
 </html>
+
 
 
