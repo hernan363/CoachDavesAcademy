@@ -19,6 +19,7 @@
             padding: 1rem 2rem;
             text-align: center;
             position: relative;
+            z-index: 1;
         }
         header h1 {
             font-size: 3rem;
@@ -35,10 +36,10 @@
         }
         .features {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
+            justify-content: space-between;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
             animation: moveUp 10s linear infinite;
         }
         .feature {
@@ -47,6 +48,8 @@
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            margin: 0 1rem;
             transition: transform 0.2s ease;
         }
         .feature:hover {
@@ -82,12 +85,11 @@
         /* Rocket Animation */
         .rocket {
             position: absolute;
-            bottom: -200px;
+            bottom: -150px;
             left: 50%;
             transform: translateX(-50%);
             animation: launch 10s linear infinite;
-            z-index: -1;
-            transition: transform 0.3s ease;
+            z-index: 1;
         }
         .rocket:hover {
             transform: translateX(-50%) scale(1.2);
@@ -95,9 +97,9 @@
 
         /* Animations */
         @keyframes launch {
-            0% { bottom: -200px; }
-            50% { bottom: 50%; }
-            100% { bottom: -200px; }
+            0% { bottom: -150px; }
+            50% { bottom: 30%; }
+            100% { bottom: -150px; }
         }
         @keyframes moveUp {
             0% { transform: translateY(0); }
@@ -118,26 +120,27 @@
     <header>
         <h1>FUEL</h1>
         <p>Powering the Future of Transactions</p>
-        <img class="rocket" src="https://via.placeholder.com/150?text=Rocket" alt="Rocket">
     </header>
+
+    <img class="rocket" src="https://media.giphy.com/media/xT5LMQdXRLkF5Udx9K/giphy.gif" alt="Rocket Launch">
 
     <main class="container">
         <!-- Features Section -->
         <section class="features">
             <div class="feature">
                 <img src="https://via.placeholder.com/100" alt="Feature 1">
-                <h3>Innovative Design</h3>
-                <p>Cutting-edge technology fueling a seamless transaction experience.</p>
+                <h3>Future Proof</h3>
+                <p>Next-gen technology designed for scalability and flexibility.</p>
             </div>
             <div class="feature">
                 <img src="https://via.placeholder.com/100" alt="Feature 2">
-                <h3>Scalability</h3>
-                <p>Built to handle exponential growth and adapt to future needs.</p>
+                <h3>Secure</h3>
+                <p>State-of-the-art security protocols ensuring safe transactions.</p>
             </div>
             <div class="feature">
                 <img src="https://via.placeholder.com/100" alt="Feature 3">
-                <h3>Community Focused</h3>
-                <p>Driven by a global network of supporters and innovators.</p>
+                <h3>Decentralized</h3>
+                <p>Community-driven with a commitment to decentralization.</p>
             </div>
         </section>
 
@@ -158,4 +161,5 @@
     </script>
 </body>
 </html>
+
 
