@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FUEL - The Meme Coin That Powers FOMO</title>
+    <title>FUEL - The Token of the Future</title>
     <style>
         /* Global Styles */
         body {
@@ -11,13 +11,14 @@
             font-family: 'Arial', sans-serif;
             background: #0d1117;
             color: #f0f6fc;
-            line-height: 1.6;
+            overflow: hidden; /* To hide overflowing rocket animation */
         }
         header {
             background: linear-gradient(90deg, #f53844, #42378f);
             color: white;
             padding: 1rem 2rem;
             text-align: center;
+            position: relative;
         }
         header h1 {
             font-size: 3rem;
@@ -38,6 +39,7 @@
             gap: 1.5rem;
             justify-content: center;
             margin-bottom: 2rem;
+            animation: moveUp 10s linear infinite;
         }
         .feature {
             background: #161b22;
@@ -45,6 +47,10 @@
             padding: 1.5rem;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease;
+        }
+        .feature:hover {
+            transform: scale(1.05);
         }
         .feature img {
             max-width: 100px;
@@ -73,6 +79,31 @@
             background: #d63031;
         }
 
+        /* Rocket Animation */
+        .rocket {
+            position: absolute;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: launch 10s linear infinite;
+            z-index: -1;
+            transition: transform 0.3s ease;
+        }
+        .rocket:hover {
+            transform: translateX(-50%) scale(1.2);
+        }
+
+        /* Animations */
+        @keyframes launch {
+            0% { bottom: -200px; }
+            50% { bottom: 50%; }
+            100% { bottom: -200px; }
+        }
+        @keyframes moveUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
         /* Footer */
         footer {
             background: #161b22;
@@ -85,8 +116,9 @@
 </head>
 <body>
     <header>
-        <h1>🚀 FUEL</h1>
-        <p>The Meme Coin That Powers Your FOMO!</p>
+        <h1>FUEL</h1>
+        <p>Powering the Future of Transactions</p>
+        <img class="rocket" src="https://via.placeholder.com/150?text=Rocket" alt="Rocket">
     </header>
 
     <main class="container">
@@ -94,35 +126,36 @@
         <section class="features">
             <div class="feature">
                 <img src="https://via.placeholder.com/100" alt="Feature 1">
-                <h3>FOMO Engine</h3>
-                <p>Fuel the hype with every transaction! Burn mechanics and rewards drive the community forward.</p>
+                <h3>Innovative Design</h3>
+                <p>Cutting-edge technology fueling a seamless transaction experience.</p>
             </div>
             <div class="feature">
                 <img src="https://via.placeholder.com/100" alt="Feature 2">
-                <h3>Moon Ready</h3>
-                <p>Designed to take off. Join the rocket as we aim for the moon and beyond!</p>
+                <h3>Scalability</h3>
+                <p>Built to handle exponential growth and adapt to future needs.</p>
             </div>
             <div class="feature">
                 <img src="https://via.placeholder.com/100" alt="Feature 3">
-                <h3>Community Driven</h3>
-                <p>Your memes, your voice, your moonshot. FUEL is powered by YOU.</p>
+                <h3>Community Focused</h3>
+                <p>Driven by a global network of supporters and innovators.</p>
             </div>
         </section>
 
         <!-- Call to Action -->
         <div class="cta">
-            <button id="buyButton">🔥 Where to Buy $FUEL</button>
+            <button id="buyButton">💳 Where to Buy $FUEL</button>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 FUEL Coin | Fueled by Memes</p>
+        <p>&copy; 2024 FUEL Token | Powering the Future</p>
     </footer>
 
     <script>
         document.getElementById('buyButton').addEventListener('click', () => {
-            alert('Link coming soon! Stay hyped for $FUEL!');
+            alert('Link coming soon! Stay tuned for $FUEL.');
         });
     </script>
 </body>
 </html>
+
