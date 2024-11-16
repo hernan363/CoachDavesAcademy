@@ -3,148 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 FUEL - The Token of the Future</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/2/22/Red_rocket_icon.svg" type="image/svg+xml">
-
+    <title>Fuel 🚀</title>
+    <link rel="icon" href="https://emoji.slack-edge.com/T03R9EK06/rocket_6d3ba1e9.png"> <!-- Rocket icon for tab -->
     <style>
-        /* Global Styles */
-        body {
+        /* General Reset */
+        * {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG9xdGQ2a2R5NWdpZmhyem1wZW10bzU2c2ZhbDRneTNqZWZoY3p4dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/utz68KlKM5LGBVF6HZ/giphy.webp') no-repeat center center fixed;
-            background-size: contain; /* Ensures the image is not stretched */
-            background-position: center;
-            background-attachment: fixed;
-            color: #f0f6fc;
-            overflow-y: scroll;
-            height: 100vh;
-        }
-        header {
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 1rem 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        header h1 {
-            font-size: 3rem;
-        }
-        header p {
-            font-size: 1.2rem;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Section Styles */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 2rem;
-            position: relative;
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG9xdGQ2a2R5NWdpZmhyem1wZW10bzU2c2ZhbDRneTNqZWZoY3p4dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/utz68KlKM5LGBVF6HZ/giphy.webp') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        /* Left and Right Content Divs */
+        .left, .right {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            padding: 20px;
             z-index: 2;
         }
-        .features {
+
+        .left {
+            left: 0;
+            text-align: left;
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 2;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
-        .feature {
-            background: rgba(22, 27, 34, 0.8);
-            border-radius: 10px;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            flex: 1;
-            margin: 0 1rem;
-            transition: transform 0.2s ease;
+
+        .right {
+            right: 0;
+            text-align: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
-        .feature:hover {
-            transform: scale(1.05);
-        }
-        .feature iframe {
-            max-width: 100%;
-            margin-bottom: 1rem;
-        }
+
         .feature h3 {
-            color: #58a6ff;
+            margin-top: 10px;
+            font-size: 1.5rem;
         }
 
         /* Buy Token Button */
-        .cta {
-            position: fixed;
+        .buy-token {
+            position: absolute;
             top: 20px;
             right: 20px;
-            z-index: 2;
-        }
-        .cta button {
-            background: #f53844;
-            color: white;
+            background-color: #ff6600;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
+            color: white;
+            font-size: 1rem;
             cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .cta button:hover {
-            background: #d63031;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Footer */
-        footer {
-            background: rgba(22, 27, 34, 0.9);
-            padding: 1rem 2rem;
+        .buy-token:hover {
+            background-color: #ff5500;
+        }
+
+        .buy-token a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Features Section Styling */
+        .features {
+            margin-top: 40px;
             text-align: center;
-            color: #8b949e;
-            font-size: 0.9rem;
-            z-index: 2;
         }
 
-        /* Animations */
-        @keyframes moveUp {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-20px); }
+        .features .feature {
+            margin-bottom: 20px;
         }
+        
     </style>
 </head>
 <body>
-    <header>
-        <h1>🚀 FUEL</h1>
-        <p>Powering the Future of Transactions</p>
-    </header>
-
-    <main class="container">
-        <!-- Features Section -->
-        <section class="features">
-            <div class="feature">
-                <iframe src="https://giphy.com/embed/ujwDBM6tdTP1JvHn7n" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-                <h3>Taking off to the Future!</h3>
-            </div>
-            <div class="feature">
-                <h3>Waving bye to everyone left behind! 👋</h3>
-            </div>
-        </section>
-    </main>
-
-    <!-- Buy Token Button -->
-    <div class="cta">
-        <button id="buyButton">💳 Where to Buy $FUEL</button>
+    <div class="left">
+        <iframe src="https://giphy.com/embed/ujwDBM6tdTP1JvHn7n" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <h3>Taking off to the Future!</h3>
     </div>
 
-    <footer>
-        <p>&copy; 2024 FUEL Token | Powering the Future</p>
-    </footer>
+    <div class="right">
+        <span style="font-size: 4rem;">👋</span>
+        <h3>Waving Goodbye to Everyone Left Behind!</h3>
+    </div>
 
-    <script>
-        document.getElementById('buyButton').addEventListener('click', () => {
-            alert('Link coming soon! Stay tuned for $FUEL.');
-        });
-    </script>
+    <button class="buy-token"><a href="#">Buy Fuel Token</a></button>
+
+    <section class="features">
+        <div class="feature">
+            <iframe src="https://giphy.com/embed/ujwDBM6tdTP1JvHn7n" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            <h3>Ready for Blast Off!</h3>
+        </div>
+        <div class="feature">
+            <h3>Join the Rocket Ride 🚀</h3>
+        </div>
+    </section>
 </body>
 </html>
+
 
 
 
