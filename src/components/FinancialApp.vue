@@ -4,7 +4,7 @@
     <p>Download our app to start your journey towards financial freedom:</p>
     <a href="#" class="btn">Download Now</a>
     <!-- Add video or screenshot here -->
-    <img src="../assets/app-screenshot.png" alt="App screenshot" />
+    <!-- <img src="../assets/app-screenshot.png" alt="App screenshot" /> -->
   </div>
 </template>
 
