@@ -1,0 +1,86 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for built files
+/dist
+
+# Dependency directories
+node_modules/
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional yarn cache directory
+.yarn/cache
+
+# Optional yarn integrity file
+.yarn/integrity
+
+# Optional yarn plug'n'play manifest file
+.yarn/unplugged
+
+# Optional yarn build artifacts
+.yarn/build-state.yml
+
+# Optional parcel cache
+.parcel-cache
+
+# Optional babel cache
+.babel.json
+
+# Optional vue-cli cache
+.cache
+
+# Optional jest cache
+jest/
+
+# Optional Cypress cache
+.cypress
+
+# Optional test artifacts
+coverage/
+
+# Optional generated lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Optional local environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Optional TypeScript cache
+*.tsbuildinfo
+
+# Optional build artifacts
+build/
+
+# Optional Vite cache
+.vite/
