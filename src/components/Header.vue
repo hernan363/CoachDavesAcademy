@@ -19,26 +19,28 @@ export default {
 
 <style scoped>
 .header {
-  padding: 1rem 0; /* Add some space inside the header */
-  color: white; /* Text color for contrast against dark backgrounds */
+  /* Remove the background */
+  background: transparent;
+  padding: 1rem 0;
+  color: black; /* Set text color to black */
 }
 
 .header nav {
-  display: flex; /* Use flexbox for alignment */
-  justify-content: center; /* Center the nav items */
-  gap: 2rem; /* Space between items */
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .header nav a {
-  color: white;
+  color: black; /* Black text for links */
   text-decoration: none;
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
-  font-weight: normal; /* Default font weight */
+  transition: all 0.3s ease;
+  font-weight: normal;
 }
 
 .header nav a:hover {
   text-decoration: underline;
-  font-weight: bold; /* Makes the text "pop out" */
-  transform: translateY(-2px); /* Slight upward movement for a pop effect */
+  font-weight: bold;
+  transform: translateY(-2px);
 }
 </style>

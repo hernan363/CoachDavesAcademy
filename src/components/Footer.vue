@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <p>&copy; 2025 Coach Dave's Academy. All rights reserved.</p>
+    <p>© 2025 Coach Dave's Academy. All rights reserved.</p>
     <p><router-link to="/contact">Contact Us</router-link> | <a href="#">Privacy Policy</a></p>
   </footer>
 </template>
@@ -13,15 +13,18 @@ export default {
 
 <style scoped>
 .footer {
-  background-color: #333;
-  color: white;
+  /* Transparent background */
+  background: transparent;
+  color: black; /* Black text */
   text-align: center;
   padding: 1rem;
 }
+
 .footer a {
-  color: white;
+  color: black; /* Black links */
   text-decoration: none;
 }
+
 .footer a:hover {
   text-decoration: underline;
 }
