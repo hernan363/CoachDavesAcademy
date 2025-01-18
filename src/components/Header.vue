@@ -21,7 +21,6 @@ export default {
   .header {
     background: transparent;
     padding: 1.5rem 0; /* Increased padding for height */
-    color: black;
   }
 
   .header nav {
@@ -31,7 +30,7 @@ export default {
   }
 
   .header nav a {
-  color: white;
+  color: rgb(0, 42, 255); /* Default text color now blue */
   text-decoration: none;
   transition: all 0.5s ease;
   font-weight: normal;
@@ -39,12 +38,16 @@ export default {
   border-radius: 5px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-shadow: -1px 0 rgb(0, 42, 255), 0 1px rgb(0, 42, 255), 1px 0 rgb(0, 42, 255), 0 -1px rgb(0, 42, 255);
+  text-shadow: none; /* No shadow by default */
 }
 
 .header nav a:hover {
-  color: rgb(0, 42, 255);
-  text-shadow: none;
+  color: white; /* On hover, text color changes to white */
+  text-shadow: 
+    -2px 0 rgb(0, 42, 255), 
+    0 2px rgb(0, 42, 255), 
+    2px 0 rgb(0, 42, 255), 
+    0 -2px rgb(0, 42, 255); /* Shadow increased by 2px on hover */  
   font-weight: bolder;
   transform: translateY(-2px);
 }
