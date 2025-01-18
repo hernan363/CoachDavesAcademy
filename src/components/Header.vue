@@ -1,12 +1,12 @@
 <template>
   <header class="header">
     <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/app">Financial App</router-link>
-      <router-link to="/tips">Tips & Tricks</router-link>
-      <router-link to="/presentations">Presentations</router-link>
-      <router-link to="/contact">Contact Coach Dave</router-link>
-      <router-link to="/about">About</router-link>
+      <router-link to="/" class="standout-text">Home</router-link>
+      <router-link to="/app" class="standout-text">Financial App</router-link>
+      <router-link to="/tips" class="standout-text">Tips & Tricks</router-link>
+      <router-link to="/presentations" class="standout-text">Presentations</router-link>
+      <router-link to="/contact" class="standout-text">Contact Coach Dave</router-link>
+      <router-link to="/about" class="standout-text">About</router-link>
     </nav>
   </header>
 </template>
