@@ -1,5 +1,8 @@
 <template>
   <div id="app" class="main-background">
+    <head>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
     <Header />
     <main class="content">
       <router-view></router-view>
