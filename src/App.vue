@@ -1,7 +1,9 @@
 <template>
   <div id="app" class="main-background">
     <Header />
-    <router-view></router-view>
+    <main class="content">
+      <router-view></router-view>
+    </main>
     <Footer />
   </div>
 </template>
@@ -20,10 +22,17 @@ export default {
 
 <style>
 .main-background {
-  background-image: url('./images/piggyBank.jpg'); /* Replace with your actual image path */
+  background-image: url('./images/piggyBank.jpg');
   background-size: cover;
-  background-attachment: fixed; /* Optional: keeps background fixed while scrolling */
+  background-attachment: fixed;
   background-position: center;
-  min-height: 100vh; /* Ensures the background covers at least the full viewport height */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: black;
+}
+
+.content {
+  flex: 1; /* This will make the content area take up all available space */
 }
 </style>

@@ -12,20 +12,20 @@ export default {
 </script>
 
 <style scoped>
-.footer {
-  /* Transparent background */
-  background: transparent;
-  color: black; /* Black text */
-  text-align: center;
-  padding: 1rem;
-}
+  .footer {
+    background: transparent;
+    color: black;
+    text-align: center;
+    padding: 1rem 0; /* Ensure enough vertical padding */
+    margin-top: auto; /* This will push the footer to the bottom */
+  }
 
-.footer a {
-  color: black; /* Black links */
-  text-decoration: none;
-}
+  .footer a {
+    color: black;
+    text-decoration: none;
+  }
 
-.footer a:hover {
-  text-decoration: underline;
-}
+  .footer a:hover {
+    text-decoration: underline;
+  }
 </style>
