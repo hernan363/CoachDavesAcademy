@@ -40,8 +40,7 @@ export default {
   }
 
   .header nav a:hover {
-    text-decoration: underline;
-    font-weight: bold;
+    font-weight: bolder;
     transform: translateY(-2px);
     background-color: rgba(255, 255, 255, 0.1); /* Very subtle highlight on hover */
   }
