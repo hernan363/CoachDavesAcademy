@@ -83,3 +83,5 @@ build/
 
 # Optional Vite cache
 .vite/
+
+.DS_Store

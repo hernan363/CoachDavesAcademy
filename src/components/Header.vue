@@ -1,12 +1,12 @@
 <template>
   <header class="header">
     <nav>
-      <router-link to="/" class="standout-text">Home</router-link>
-      <router-link to="/app" class="standout-text">Financial App</router-link>
-      <router-link to="/tips" class="standout-text">Tips & Tricks</router-link>
-      <router-link to="/presentations" class="standout-text">Presentations</router-link>
-      <router-link to="/contact" class="standout-text">Contact Coach Dave</router-link>
-      <router-link to="/about" class="standout-text">About</router-link>
+      <router-link to="/">Home</router-link>
+      <router-link to="/app">Financial App</router-link>
+      <router-link to="/tips">Tips & Tricks</router-link>
+      <router-link to="/presentations">Presentations</router-link>
+      <router-link to="/contact">Contact Coach Dave</router-link>
+      <router-link to="/about">About</router-link>
     </nav>
   </header>
 </template>
@@ -31,17 +31,21 @@ export default {
   }
 
   .header nav a {
-    color: black;
-    text-decoration: none;
-    transition: all 0.5s ease; /* Slower transition might reduce flicker */
-    font-weight: normal;
-    padding: 0.5rem 1rem; /* Increase clickable area */
-    border-radius: 5px; /* For a subtle button-like effect */
-  }
+  color: white;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  font-weight: normal;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: -1px 0 rgb(0, 42, 255), 0 1px rgb(0, 42, 255), 1px 0 rgb(0, 42, 255), 0 -1px rgb(0, 42, 255);
+}
 
-  .header nav a:hover {
-    font-weight: bolder;
-    transform: translateY(-2px);
-    background-color: rgba(255, 255, 255, 0.1); /* Very subtle highlight on hover */
-  }
+.header nav a:hover {
+  color: rgb(0, 42, 255);
+  text-shadow: none;
+  font-weight: bolder;
+  transform: translateY(-2px);
+}
 </style>
