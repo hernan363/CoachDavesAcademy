@@ -19,18 +19,26 @@ export default {
 
 <style scoped>
 .header {
-  background-color: #333;
-  padding: 1rem;
+  padding: 1rem 0; /* Add some space inside the header */
+  color: white; /* Text color for contrast against dark backgrounds */
 }
-nav {
-  display: flex;
-  justify-content: space-around;
+
+.header nav {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center the nav items */
+  gap: 2rem; /* Space between items */
 }
-nav a {
+
+.header nav a {
   color: white;
   text-decoration: none;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  font-weight: normal; /* Default font weight */
 }
-nav a:hover {
+
+.header nav a:hover {
   text-decoration: underline;
+  font-weight: bold; /* Makes the text "pop out" */
+  transform: translateY(-2px); /* Slight upward movement for a pop effect */
 }
 </style>

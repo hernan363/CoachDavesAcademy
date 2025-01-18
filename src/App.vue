@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="main-background">
     <Header />
     <router-view></router-view>
     <Footer />
@@ -19,5 +19,11 @@ export default {
 </script>
 
 <style>
-/* Global styles here */
+.main-background {
+  background-image: url('./images/piggyBank.jpg'); /* Replace with your actual image path */
+  background-size: cover;
+  background-attachment: fixed; /* Optional: keeps background fixed while scrolling */
+  background-position: center;
+  min-height: 100vh; /* Ensures the background covers at least the full viewport height */
+}
 </style>
