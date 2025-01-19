@@ -1,6 +1,6 @@
 <template>
     <div class="tip">
-      <h2>OfferUp</h2>
+      <h2>Online Markets</h2>
       <p>Here are some strategies for saving money...</p>
       <!-- Add more content here -->
     </div>

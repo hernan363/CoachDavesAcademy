@@ -30,22 +30,22 @@
 
 <script>
 import { gsap } from 'gsap';
-import Tip1 from './Tips/Tip1.vue';
-import Tip2 from './Tips/Tip2.vue';
-import Tip3 from './Tips/Tip3.vue'; // Add more as needed
+import Costco from './Tips/Costco.vue';
+import GiftCards from './Tips/GiftCards.vue';
+import OnlineMarkets from './Tips/OnlineMarkets.vue'; // Add more as needed
 
 export default {
   components: {
-    Tip1,
-    Tip2,
-    Tip3
+    Costco,
+    GiftCards,
+    OnlineMarkets
   },
   data() {
     return {
       topics: [
-        { id: 'tip1', title: 'Costco', component: 'Tip1' },
-        { id: 'tip2', title: 'Gift Cards', component: 'Tip2' },
-        { id: 'tip3', title: 'OfferUp', component: 'Tip3' },
+        { id: 'tip1', title: 'Costco Savings', component: 'Costco' },
+        { id: 'tip2', title: 'Using Gift Cards', component: 'GiftCards' },
+        { id: 'tip3', title: 'Online Market Tips', component: 'OnlineMarkets' },
         // Add more topics here
       ],
       currentTopicId: null,
