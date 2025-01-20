@@ -1,6 +1,6 @@
 <template>
   <div class="tips-and-tricks">
-    <div :class="['sidebar', { 'expanded': isSidebarExpanded }]">
+    <div :class="['sidebar', { 'expanded': isSidebarExpanded }]" :style="{ height: sidebarHeight }">
       <button class="toggle-sidebar" @click="toggleSidebar">
         <span class="arrow" :class="{'outward': isSidebarExpanded}">◀</span>
         <span class="arrow" :class="{'outward': isSidebarExpanded}">◀</span>
@@ -16,7 +16,7 @@
         </li>
       </ul>
     </div>
-    <div class="content">
+    <div class="content-container">
       <transition name="fade" mode="out-in">
         <component 
           :is="currentComponent" 
@@ -30,48 +30,67 @@
 
 <script>
 import { gsap } from 'gsap';
-import Costco from './Tips/Costco.vue';
-import GiftCards from './Tips/GiftCards.vue';
-import OnlineMarkets from './Tips/OnlineMarkets.vue'; // Add more as needed
+import Tip1 from './Tips/Costco.vue';
+import Tip2 from './Tips/GiftCards.vue';
+import Tip3 from './Tips/OnlineMarkets.vue';
+import Tip4 from './Tips/SplittingApp.vue'; // Add more as needed
 
 export default {
   components: {
-    Costco,
-    GiftCards,
-    OnlineMarkets
+    Tip1,
+    Tip2,
+    Tip3,
+    Tip4
   },
   data() {
     return {
       topics: [
-        { id: 'tip1', title: 'Costco Savings', component: 'Costco' },
-        { id: 'tip2', title: 'Using Gift Cards', component: 'GiftCards' },
-        { id: 'tip3', title: 'Online Market Tips', component: 'OnlineMarkets' },
+        { id: 'tip1', title: 'Costco Savings', component: 'Tip1' },
+        { id: 'tip2', title: 'Using Gift Cards', component: 'Tip2' },
+        { id: 'tip3', title: 'Online Market Tips', component: 'Tip3' },
+        { id: 'tip4', title: 'Splitting Apps', component: 'Tip4' },
         // Add more topics here
       ],
       currentTopicId: null,
       currentComponent: null,
-      isSidebarExpanded: true // Start with sidebar expanded
+      isSidebarExpanded: true,
+      sidebarHeight: '100vh' // Initial height to match viewport
     };
   },
   methods: {
     changeTopic(id) {
       const topic = this.topics.find(t => t.id === id);
       if (topic) {
-        // Only content fades, not the sidebar
-        gsap.to('.content', { opacity: 0, duration: 0.3, onComplete: () => {
+        gsap.to('.content-container', { opacity: 0, duration: 0.3, onComplete: () => {
           this.currentTopicId = id;
           this.currentComponent = topic.component;
-          gsap.to('.content', { opacity: 1, duration: 0.3, delay: 0.1 });
+          gsap.to('.content-container', { opacity: 1, duration: 0.3, delay: 0.1 });
         }});
       }
     },
     toggleSidebar() {
       this.isSidebarExpanded = !this.isSidebarExpanded;
+      // Adjust the sidebar height to match the content container when expanded
+      if (this.isSidebarExpanded) {
+        const contentHeight = document.querySelector('.content-container').offsetHeight;
+        this.sidebarHeight = `${contentHeight}px`;
+      } else {
+        this.sidebarHeight = 'auto'; // Reset height when collapsed
+      }
     }
   },
   mounted() {
-    // Set initial topic if needed
-    this.changeTopic('tip1');
+    this.changeTopic('tip1'); // Set initial topic
+    // Force a re-evaluation of sidebar height on mount if needed
+    this.toggleSidebar();
+    this.toggleSidebar();
+  },
+  updated() {
+    // This ensures the sidebar height matches the content height if content changes
+    if (this.isSidebarExpanded) {
+      const contentHeight = document.querySelector('.content-container').offsetHeight;
+      this.sidebarHeight = `${contentHeight}px`;
+    }
   }
 }
 </script>
@@ -79,13 +98,13 @@ export default {
 <style scoped>
 .tips-and-tricks {
   display: flex;
-  height: 100vh; /* Adjust based on your layout */
+  height: 100vh; /* Full height of the viewport */
 }
 
 .sidebar {
   width: 200px; /* Default width when expanded */
   background-color: #f0f0f0;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease, height 0.3s ease;
   overflow: hidden;
 }
 
@@ -137,11 +156,12 @@ li:hover, li.active {
   background-color: #e0e0e0;
 }
 
-.content {
+.content-container {
   flex-grow: 1;
   padding: 20px;
   box-sizing: border-box;
-  opacity: 1; /* Ensure content starts visible */
+  overflow-y: auto;
+  max-height: 100vh; /* Match the viewport height */
 }
 
 .fade-enter-active, .fade-leave-active {
