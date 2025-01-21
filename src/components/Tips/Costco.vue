@@ -41,36 +41,24 @@
           <h4>Gas Price Comparison</h4>
           <canvas id="gasChart" width="400" height="200"></canvas>
         </div>
-      </div>
 
-      <!-- Second Comparison Section -->
-      <div class="comparison-section">
-        <h3>Costco vs. Regular Retail</h3>
-        <div class="side-by-side">
-          <div class="item">
-            <h4>Costco</h4>
-            <ul>
-              <li>Lower prices on bulk items</li>
-              <li>High-quality Kirkland brand</li>
-              <li>Fewer but bulkier options</li>
-            </ul>
-          </div>
-          <div class="item">
-            <h4>Regular Retail</h4>
-            <ul>
-              <li>Smaller pack sizes at higher per-unit cost</li>
-              <li>Wider variety of brands</li>
-              <li>More frequent promotions on individual items</li>
-            </ul>
-          </div>
-        </div>
         <div class="graph-section">
-          <!-- Placeholder for graph -->
-          <!-- <img src="@/assets/graphs/retail-comparison.png" alt="Retail Comparison Graph" class="graph"> -->
+          <h4>Annual Savings Comparison</h4>
+          <canvas id="annualSavingsChart" width="400" height="200"></canvas>
         </div>
-      </div>
 
-      <p class="conclusion">In conclusion, leveraging a Costco membership can significantly reduce your shopping expenses if you manage your purchases wisely. Bulk buying is key, but remember to assess your consumption habits to avoid waste.</p>
+        <p class="conclusion">
+          After comparing the costs for toilet paper, paper towels, and gas, it's evident that shopping at Costco can lead to significant savings annually. Here's the breakdown:
+          <br><br>
+          - <strong>Toilet Paper:</strong> At Costco, 60 rolls at 160 sheets per roll cost $20.16 per year, while the same amount at other stores would be $51.84, saving you $31.68.
+          <br>
+          - <strong>Paper Towels:</strong> With 30 rolls at 80 sheets per roll, Costco's price comes to $24.96 per year, compared to $39.84 at other stores, resulting in a $14.88 saving.
+          <br>
+          - <strong>Gas:</strong> For 300 gallons, Costco's rate of $3.49 per gallon totals $1,047 annually, whereas at other stores at $3.89 per gallon, it would be $1,167, offering a $120 saving.
+          <br><br>
+          In total, by choosing Costco for these items, you could save approximately <strong>$166.56</strong> per year. This saving alone far exceeds the cost of the $65 Costco membership for two members, clearly demonstrating that the membership fee is not only justified but also offers substantial financial benefits over time.
+        </p>
+      </div>
   </div>
 </div>
 
@@ -86,19 +74,20 @@ export default {
     this.createToiletPaperChart();
     this.createPaperTowelsChart();
     this.createGasChart();
+    this.createAnnualSavingsChart(); // New method for the annual savings chart
   },
   methods: {
     createToiletPaperChart() {
       new Chart(document.getElementById('toiletPaperChart'), {
         type: 'bar',
         data: {
-          labels: ['Costco', 'Average'],
+          labels: ['Average', 'Costco'],
           datasets: [{
             label: 'Price per Sheet ($)',
-            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-            borderColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)'],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 235, 162, 0.2)'],
+            borderColor: ['rgb(255, 99, 132)', 'rgb(54, 235, 162)'],
             borderWidth: 1,
-            data: [0.0021, 0.0054]
+            data: [0.0054, 0.0021] // Swapped data to match labels
           }]
         },
         options: {
@@ -114,17 +103,18 @@ export default {
         }
       });
     },
+
     createPaperTowelsChart() {
       new Chart(document.getElementById('paperTowelsChart'), {
         type: 'bar',
         data: {
-          labels: ['Costco', 'Average'],
+          labels: ['Average', 'Costco'],
           datasets: [{
             label: 'Price per Sheet ($)',
-            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-            borderColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)'],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 235, 162, 0.2)'],
+            borderColor: ['rgb(255, 99, 132)', 'rgb(54, 235, 162)'],
             borderWidth: 1,
-            data: [0.0104, 0.0166]
+            data: [0.0166, 0.0104] // Swapped data to match labels
           }]
         },
         options: {
@@ -140,17 +130,18 @@ export default {
         }
       });
     },
+
     createGasChart() {
       new Chart(document.getElementById('gasChart'), {
         type: 'bar',
         data: {
-          labels: ['Costco', 'Average'],
+          labels: ['Average', 'Costco'],
           datasets: [{
             label: 'Price per Gallon ($)',
-            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-            borderColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)'],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 235, 162, 0.2)'],
+            borderColor: ['rgb(255, 99, 132)', 'rgb(54, 235, 162)'],
             borderWidth: 1,
-            data: [3.49, 3.89]
+            data: [3.89, 3.49] // Swapped data to match labels
           }]
         },
         options: {
@@ -160,6 +151,33 @@ export default {
               title: {
                 display: true,
                 text: 'Price per Gallon ($)'
+              }
+            }
+          }
+        }
+      });
+    },
+
+    createAnnualSavingsChart() {
+      new Chart(document.getElementById('annualSavingsChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Average Stores', 'Costco'],
+          datasets: [{
+            label: 'Annual Cost ($)',
+            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 235, 162, 0.2)'],
+            borderColor: ['rgb(255, 99, 132)', 'rgb(54, 235, 162)'],
+            borderWidth: 1,
+            data: [1258.68, 1092.12] // Swapped positions of data
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Annual Cost ($)'
               }
             }
           }
@@ -193,6 +211,15 @@ export default {
 
 .comparison-section {
   margin-bottom: 30px;
+}
+
+.conclusion {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  line-height: 1.6;
 }
 
 .side-by-side {
