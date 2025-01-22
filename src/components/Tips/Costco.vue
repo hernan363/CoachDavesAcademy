@@ -1,6 +1,6 @@
 <template>
   <div class="tip">
-    <h2>Costco</h2>
+    <img src="@/assets/logos/costco.png" alt="Costco Logo" class="costco-logo">
     <div class="content-container">
 
       <p class="introduction">Welcome to the comprehensive guide on maximizing your savings at Costco. Whether you're buying in bulk or seeking exclusive deals, here's how you can benefit.</p>
@@ -194,6 +194,12 @@ export default {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.costco-logo {
+  max-width: 150px; /* Adjust size as necessary */
+  display: block;
+  margin: 0 auto 20px;
 }
 
 .content-container {
