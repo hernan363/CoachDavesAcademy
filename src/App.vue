@@ -25,7 +25,7 @@ export default {
       inner: "Dave's Academy"
     },
     link: [
-      { rel: 'icon', href: require('@/assets/coachDavesLogo.png') } // Adjust path to your logo
+      { rel: 'icon', href: require('./assets/logos/coachDavesLogo.png') } // Adjust path to your logo
     ]
   }
 }
