@@ -1,19 +1,66 @@
 <template>
   <div class="tips-and-tricks">
-    <div :class="['sidebar', { 'expanded': isSidebarExpanded }]" :style="{ height: sidebarHeight }">
-      <button class="toggle-sidebar" @click="toggleSidebar">
-        <span class="arrow" :class="{'outward': isSidebarExpanded}">◀</span>
-        <span class="arrow" :class="{'outward': isSidebarExpanded}">◀</span>
-      </button>
-      <ul v-if="isSidebarExpanded">
-        <li 
-          v-for="topic in topics" 
-          :key="topic.id" 
-          :class="{'active': topic.id === currentTopicId}" 
-          @click="changeTopic(topic.id)"
-        >
-          {{ topic.title }}
+    <div class="sidebar">
+      <div class="filter">
+        <input type="text" v-model="searchQuery" placeholder="Search tips..." />
+      </div>
+      <ul>
+        <li class="category" @click="toggleCategory('savingMoney')">
+          <i class="material-icons">savings</i> Saving Money
+          <i class="material-icons toggle-icon">{{ isSavingMoneyExpanded ? 'expand_less' : 'expand_more' }}</i>
         </li>
+        <ul v-if="isSavingMoneyExpanded">
+          <li 
+            v-for="topic in filteredSavingMoneyTopics" 
+            :key="topic.id" 
+            :class="{'active': topic.id === currentTopicId}" 
+            @click="changeTopic(topic.id)"
+          >
+            {{ topic.title }}
+          </li>
+        </ul>
+        <li class="category" @click="toggleCategory('negotiating')">
+          <i class="material-icons">handshake</i> Negotiating
+          <i class="material-icons toggle-icon">{{ isNegotiatingExpanded ? 'expand_less' : 'expand_more' }}</i>
+        </li>
+        <ul v-if="isNegotiatingExpanded">
+          <li 
+            v-for="topic in filteredNegotiatingTopics" 
+            :key="topic.id" 
+            :class="{'active': topic.id === currentTopicId}" 
+            @click="changeTopic(topic.id)"
+          >
+            {{ topic.title }}
+          </li>
+        </ul>
+        <li class="category" @click="toggleCategory('banking')">
+          <i class="material-icons">account_balance</i> Banking
+          <i class="material-icons toggle-icon">{{ isBankingExpanded ? 'expand_less' : 'expand_more' }}</i>
+        </li>
+        <ul v-if="isBankingExpanded">
+          <li 
+            v-for="topic in filteredBankingTopics" 
+            :key="topic.id" 
+            :class="{'active': topic.id === currentTopicId}" 
+            @click="changeTopic(topic.id)"
+          >
+            {{ topic.title }}
+          </li>
+        </ul>
+        <li class="category" @click="toggleCategory('investing')">
+          <i class="material-icons">trending_up</i> Investing
+          <i class="material-icons toggle-icon">{{ isInvestingExpanded ? 'expand_less' : 'expand_more' }}</i>
+        </li>
+        <ul v-if="isInvestingExpanded">
+          <li 
+            v-for="topic in filteredInvestingTopics" 
+            :key="topic.id" 
+            :class="{'active': topic.id === currentTopicId}" 
+            @click="changeTopic(topic.id)"
+          >
+            {{ topic.title }}
+          </li>
+        </ul>
       </ul>
     </div>
     <div class="content-container">
@@ -44,22 +91,64 @@ export default {
   },
   data() {
     return {
-      topics: [
+      searchQuery: '',
+      savingMoneyTopics: [
         { id: 'tip1', title: 'Costco Savings', component: 'Tip1' },
         { id: 'tip2', title: 'Using Gift Cards', component: 'Tip2' },
         { id: 'tip3', title: 'Online Market Tips', component: 'Tip3' },
         { id: 'tip4', title: 'Splitting Apps', component: 'Tip4' },
         // Add more topics here
       ],
+      negotiatingTopics: [
+        // Add negotiating topics here
+      ],
+      bankingTopics: [
+        // Add banking topics here
+      ],
+      investingTopics: [
+        // Add investing topics here
+      ],
       currentTopicId: null,
       currentComponent: null,
-      isSidebarExpanded: true,
-      sidebarHeight: '100vh' // Initial height to match viewport
+      isSavingMoneyExpanded: true,
+      isNegotiatingExpanded: true,
+      isBankingExpanded: true,
+      isInvestingExpanded: true
     };
+  },
+  computed: {
+    filteredSavingMoneyTopics() {
+      return this.savingMoneyTopics.filter(topic => 
+        topic.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+    filteredNegotiatingTopics() {
+      return this.negotiatingTopics.filter(topic => 
+        topic.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+    filteredBankingTopics() {
+      return this.bankingTopics.filter(topic => 
+        topic.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+    filteredInvestingTopics() {
+      return this.investingTopics.filter(topic => 
+        topic.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  },
+  watch: {
+    searchQuery() {
+      this.isSavingMoneyExpanded = this.filteredSavingMoneyTopics.length > 0;
+      this.isNegotiatingExpanded = this.filteredNegotiatingTopics.length > 0;
+      this.isBankingExpanded = this.filteredBankingTopics.length > 0;
+      this.isInvestingExpanded = this.filteredInvestingTopics.length > 0;
+    }
   },
   methods: {
     changeTopic(id) {
-      const topic = this.topics.find(t => t.id === id);
+      const topic = [...this.savingMoneyTopics, ...this.negotiatingTopics, ...this.bankingTopics, ...this.investingTopics].find(t => t.id === id);
       if (topic) {
         gsap.to('.content-container', { opacity: 0, duration: 0.3, onComplete: () => {
           this.currentTopicId = id;
@@ -68,29 +157,12 @@ export default {
         }});
       }
     },
-    toggleSidebar() {
-      this.isSidebarExpanded = !this.isSidebarExpanded;
-      // Adjust the sidebar height to match the content container when expanded
-      if (this.isSidebarExpanded) {
-        const contentHeight = document.querySelector('.content-container').offsetHeight;
-        this.sidebarHeight = `${contentHeight}px`;
-      } else {
-        this.sidebarHeight = 'auto'; // Reset height when collapsed
-      }
+    toggleCategory(category) {
+      this[`is${category.charAt(0).toUpperCase() + category.slice(1)}Expanded`] = !this[`is${category.charAt(0).toUpperCase() + category.slice(1)}Expanded`];
     }
   },
   mounted() {
     this.changeTopic('tip1'); // Set initial topic
-    // Force a re-evaluation of sidebar height on mount if needed
-    this.toggleSidebar();
-    this.toggleSidebar();
-  },
-  updated() {
-    // This ensures the sidebar height matches the content height if content changes
-    if (this.isSidebarExpanded) {
-      const contentHeight = document.querySelector('.content-container').offsetHeight;
-      this.sidebarHeight = `${contentHeight}px`;
-    }
   }
 }
 </script>
@@ -102,42 +174,30 @@ export default {
 }
 
 .sidebar {
-  width: 200px; /* Default width when expanded */
+  width: 250px; /* Fixed width */
   background-color: #f0f0f0;
-  transition: width 0.3s ease, height 0.3s ease;
-  overflow: hidden;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  height: 100vh; /* Fixed height */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Material Design shadow */
+  padding: 10px;
 }
 
-.sidebar:not(.expanded) {
-  width: 30px; /* Width when collapsed */
+.filter {
+  margin-bottom: 20px;
 }
 
-.toggle-sidebar {
+.filter input {
   width: 100%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px 0;
-  text-align: right; /* Align arrows to the right */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
-.arrow {
-  font-size: 16px;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.arrow.outward {
-  transform: rotate(180deg);
-}
-
-.toggle-sidebar:hover .arrow {
-  font-weight: bolder;
-  transform: translateY(-2px) rotate(0deg); /* Reset rotation for outward arrow on hover */
-}
-
-.toggle-sidebar:hover .arrow.outward {
-  transform: translateY(-2px) rotate(180deg); /* Maintain rotation for outward arrow on hover */
+.material-icons {
+  font-size: 24px;
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 ul {
@@ -156,12 +216,25 @@ li:hover, li.active {
   background-color: #e0e0e0;
 }
 
+.category {
+  font-weight: bold;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add space between category name and toggle icon */
+}
+
+.toggle-icon {
+  cursor: pointer;
+}
+
 .content-container {
   flex-grow: 1;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
-  max-height: 100vh; /* Match the viewport height */
+  height: 100vh; /* Fixed height */
+  width: calc(100% - 250px); /* Adjust width to account for sidebar */
 }
 
 .fade-enter-active, .fade-leave-active {

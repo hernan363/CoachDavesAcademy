@@ -45,11 +45,17 @@ export default {
 
 .content {
   flex: 1; /* This will make the content area take up all available space */
+  width: calc(100% - 200px); /* Static width for content area */
 }
 
 .standout-text {
   text-transform: uppercase;
   letter-spacing: 1px;
   text-shadow: -1px 0 rgb(0, 42, 255), 0 1px rgb(0, 42, 255), 1px 0 rgb(0, 42, 255), 0 -1px rgb(0, 42, 255);
+}
+
+/* Material Design shadow */
+.material-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 </style>
